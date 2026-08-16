@@ -30,6 +30,7 @@ import { PACKAGE, faq, incluido, naoIncluido, roteiro } from "@/lib/lp-data";
 import { track } from "@/lib/tracking";
 import { LeadForm } from "@/components/LeadForm";
 import { DiscountPopup } from "@/components/DiscountPopup";
+import { ReserveDialog } from "@/components/ReserveDialog";
 
 const TITLE = "Caldas Novas 3 Dias Saindo de Brasília | R$ 620 por Pessoa";
 const DESCRIPTION =
@@ -82,13 +83,15 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
 
 function LandingPage() {
   const [pax, setPax] = useState(1);
+  const [reservaOpen, setReservaOpen] = useState(false);
+  const [cupom, setCupom] = useState<string | null>(null);
   const total = pax * PACKAGE.precoNumero;
 
   const startCheckout = () => {
-    track("begin_checkout", { value: total, passengers: pax, items: [PACKAGE.destino] });
-    window.location.href = whatsappUrl(
-      `Olá! Quero reservar a excursão ${PACKAGE.destino} (${PACKAGE.datasLabel}) saindo de Brasília para ${pax} passageiro(s). Total R$ ${total},00.`,
+    setCupom(
+      typeof window !== "undefined" && localStorage.getItem("asa-cupom") ? "ASA10" : null,
     );
+    setReservaOpen(true);
   };
 
   const whatsappClick = (origin: string) => track("whatsapp_click", { origin });
@@ -96,6 +99,12 @@ function LandingPage() {
   return (
     <main>
       <DiscountPopup />
+      <ReserveDialog
+        open={reservaOpen}
+        onOpenChange={setReservaOpen}
+        passengers={pax}
+        cupom={cupom}
+      />
       {/* HERO */}
       <header className="relative isolate overflow-hidden">
         <img
@@ -171,7 +180,7 @@ function LandingPage() {
             </div>
 
             <Button variant="cta" size="xl" className="w-full" onClick={startCheckout}>
-              Reservar por R$ {total},00
+              Solicitar reserva — R$ {total},00
             </Button>
             <a
               href={whatsappUrl(`Olá! Tenho dúvidas sobre a excursão ${PACKAGE.destino}.`)}
@@ -422,7 +431,7 @@ function LandingPage() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button variant="cta" size="xl" onClick={startCheckout}>
-              Reservar agora — R$ {total},00
+              Solicitar reserva — R$ {total},00
             </Button>
             <Button variant="onHero" size="xl" asChild>
               <a
