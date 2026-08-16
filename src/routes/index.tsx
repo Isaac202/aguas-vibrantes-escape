@@ -287,11 +287,12 @@ function LandingPage() {
               loading="lazy"
               width={1200}
               height={800}
-              className="h-64 w-full rounded-3xl object-cover shadow-soft"
+              className="h-44 w-full rounded-3xl object-cover shadow-soft"
             />
           ))}
         </div>
       </Section>
+
 
       {/* HOSPEDAGEM E TRANSPORTE */}
       <Section className="bg-background">
