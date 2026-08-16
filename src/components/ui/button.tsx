@@ -16,8 +16,8 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        cta: "bg-sunset-gradient text-accent-foreground font-semibold shadow-lift hover:brightness-105 transition-all",
-        thermal: "bg-thermal-gradient text-thermal-foreground font-semibold shadow-soft hover:brightness-110",
+        cta: "bg-accent text-accent-foreground font-semibold shadow-lift hover:bg-accent/90 transition-all",
+        thermal: "bg-accent text-accent-foreground font-semibold shadow-lift hover:bg-accent/90 transition-all",
         onHero:
           "border border-thermal-foreground/40 bg-thermal-foreground/10 text-thermal-foreground backdrop-blur-sm hover:bg-thermal-foreground/20",
       },

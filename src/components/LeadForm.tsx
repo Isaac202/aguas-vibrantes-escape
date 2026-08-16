@@ -24,6 +24,7 @@ export function LeadForm({
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (cupom) localStorage.setItem("asa-cupom", cupom);
     track("generate_lead", { origin, cupom: cupom ?? null, value: PACKAGE.precoNumero });
     setSent(true);
     onDone?.();
