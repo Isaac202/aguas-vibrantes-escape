@@ -8,8 +8,9 @@ export const PACKAGE = {
   volta: "13/09/2026",
   datasLabel: "11 a 13 de setembro de 2026",
   parcelas: "ou 6x de R$ 103,33 no cartão",
-  whatsapp: "5561999999999",
-  whatsappLabel: "(61) 99999-9999",
+  whatsapp: "556198586495",
+  whatsappLabel: "(61) 9858-6495",
+
   email: "contato@asaturismo.com.br",
   empresa: "Asa Turismo",
   checkoutUrl: "#reservar",
