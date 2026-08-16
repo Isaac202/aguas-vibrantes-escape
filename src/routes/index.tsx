@@ -130,7 +130,7 @@ function LandingPage() {
             </Badge>
           </div>
 
-          <h1 className="mt-6 max-w-2xl text-4xl leading-[1.05] md:text-6xl">
+          <h1 className="mt-6 max-w-2xl text-3xl leading-[1.1] sm:text-4xl md:text-6xl">
             Caldas Novas — 3 dias e 2 noites saindo de Brasília
           </h1>
           <p className="mt-5 max-w-xl text-base opacity-90 md:text-lg">
@@ -138,20 +138,21 @@ function LandingPage() {
             dias livres para descansar. Ideal para quem trabalha muito e tem pouco tempo.
           </p>
 
-          <div className="mt-8 grid gap-4 rounded-3xl bg-card/95 p-6 text-card-foreground shadow-lift md:max-w-lg">
-            <div className="flex items-end justify-between gap-4">
-              <div>
+          <div className="mt-8 grid gap-4 rounded-3xl bg-card/95 p-5 text-card-foreground shadow-lift sm:p-6 md:max-w-lg">
+            <div className="grid gap-3 sm:flex sm:items-end sm:justify-between sm:gap-4">
+              <div className="min-w-0">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">
                   Por pessoa, em apto triplo
                 </p>
                 <p className="font-display text-4xl">{PACKAGE.preco}</p>
                 <p className="text-sm text-muted-foreground">{PACKAGE.parcelas}</p>
               </div>
-              <div className="text-right text-sm text-muted-foreground">
+              <div className="flex gap-4 text-sm text-muted-foreground sm:block sm:text-right">
                 <p>Ida {PACKAGE.ida}</p>
                 <p>Volta {PACKAGE.volta}</p>
               </div>
             </div>
+
 
             <div className="flex items-center justify-between rounded-2xl bg-muted px-4 py-3">
               <span className="text-sm font-medium">Passageiros</span>
