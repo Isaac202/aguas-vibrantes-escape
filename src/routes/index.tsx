@@ -404,31 +404,32 @@ function LandingPage() {
         </div>
       </Section>
 
-      {/* CONFIANÇA */}
-      <Section className="bg-sand">
+      {/* LEAD FORM + CONFIANÇA */}
+      <Section id="contato" className="bg-sand">
         <div className="grid gap-8 rounded-3xl border bg-card p-6 shadow-soft md:grid-cols-2 md:p-10">
           <div>
-            <SectionTitle eyebrow="Quem organiza" title="Viaje com a Asa Turismo" />
-            <p className="text-sm text-muted-foreground">
-              Operamos excursões saindo de Brasília com transporte próprio credenciado, equipe de
-              acompanhamento e hospedagem em redes consolidadas de Caldas Novas. Todo passageiro
-              viaja com seguro de viagem e recebe voucher nominal antes do embarque.
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+              Fale com a Asa Turismo
             </p>
+            <h2 className="text-2xl leading-tight md:text-3xl">
+              Receba o roteiro completo e reserve sua vaga
+            </h2>
+            <ul className="mt-5 grid gap-2 text-sm text-muted-foreground">
+              {[
+                "Ônibus e motorista credenciados, com seguro de viagem",
+                "Equipe de apoio por WhatsApp antes e durante a viagem",
+                "Voucher nominal de hospedagem enviado por e-mail",
+              ].map((i) => (
+                <li key={i} className="flex gap-2">
+                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" /> {i}
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="grid content-center gap-3 text-sm">
-            {[
-              "Ônibus com documentação e motorista credenciados",
-              "Seguro de viagem para todos os passageiros",
-              "Equipe de apoio por WhatsApp antes e durante a viagem",
-              "Voucher nominal de hospedagem enviado por e-mail",
-            ].map((i) => (
-              <li key={i} className="flex gap-2">
-                <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" /> {i}
-              </li>
-            ))}
-          </ul>
+          <LeadForm origin="secao_contato" />
         </div>
       </Section>
+
 
       {/* FAQ */}
       <Section className="bg-background">
