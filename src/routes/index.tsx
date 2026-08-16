@@ -18,7 +18,6 @@ import {
   Minus,
   Plus,
   ShieldCheck,
-  Sparkles,
   Thermometer,
   Waves,
   X,
@@ -29,6 +28,8 @@ import hotelImg from "@/assets/hotel-suite.jpg";
 import poolImg from "@/assets/thermal-pool.jpg";
 import { PACKAGE, faq, incluido, naoIncluido, roteiro } from "@/lib/lp-data";
 import { track } from "@/lib/tracking";
+import { LeadForm } from "@/components/LeadForm";
+import { DiscountPopup } from "@/components/DiscountPopup";
 
 const TITLE = "Caldas Novas 3 Dias Saindo de Brasília | R$ 620 por Pessoa";
 const DESCRIPTION =
@@ -62,7 +63,7 @@ function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`px-5 py-16 md:py-24 ${className}`}>
+    <section id={id} className={`px-5 py-12 md:py-16 ${className}`}>
       <div className="mx-auto w-full max-w-5xl">{children}</div>
     </section>
   );
@@ -94,6 +95,7 @@ function LandingPage() {
 
   return (
     <main>
+      <DiscountPopup />
       {/* HERO */}
       <header className="relative isolate overflow-hidden">
         <img
@@ -195,46 +197,32 @@ function LandingPage() {
         </div>
       </header>
 
-      {/* POR QUE CALDAS NOVAS */}
-      <Section className="bg-background">
-        <SectionTitle eyebrow="Por que Caldas Novas" title="A maior estância hidrotermal do mundo" />
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              icon: Thermometer,
-              t: "Águas de 37°C a 57°C",
-              d: "As águas brotam naturalmente aquecidas, sem qualquer aquecimento artificial.",
-            },
-            {
-              icon: Sparkles,
-              t: "Reconhecida internacionalmente",
-              d: "A região é referenciada pela NASA e pela UNESCO como sítio geológico relevante.",
-            },
-            {
-              icon: Waves,
-              t: "Lazer completo",
-              d: "Parques aquáticos, spas e piscinas termais dentro da própria estrutura hoteleira.",
-            },
-          ].map(({ icon: Icon, t, d }) => (
-            <article key={t} className="rounded-3xl border bg-card p-6 shadow-soft">
-              <Icon className="size-6 text-primary" />
-              <h3 className="mt-4 text-lg">{t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{d}</p>
+      {/* ROTEIRO */}
+      <Section id="roteiro" className="bg-sand">
+        <SectionTitle eyebrow="Roteiro" title="Como são os seus 3 dias" />
+        <div className="grid gap-4 md:grid-cols-3">
+          {roteiro.map((dia) => (
+            <article key={dia.dia} className="rounded-3xl border bg-card p-5 shadow-soft">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                {dia.dia}
+              </p>
+              <h3 className="mt-2 text-lg leading-snug">{dia.titulo}</h3>
+              <ul className="mt-4 grid gap-2">
+                {dia.itens.map((it) => (
+                  <li key={it.hora + it.texto} className="border-t pt-2 text-sm">
+                    <span className="font-semibold">{it.hora}</span>{" "}
+                    <span className="text-muted-foreground">{it.texto}</span>
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
-      </Section>
-
-      {/* PRÓXIMA SAÍDA */}
-      <Section className="bg-sand">
-        <SectionTitle eyebrow="Próximas saídas" title="Data confirmada de embarque" />
-        <div className="flex flex-col gap-6 rounded-3xl border bg-card p-6 shadow-soft md:flex-row md:items-center md:justify-between md:p-8">
-          <div>
-            <p className="font-display text-2xl">11 a 13 de setembro de 2026</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Sexta a domingo · 3 dias e 2 noites · embarque em Brasília às 07h00
-            </p>
-          </div>
+        <div className="mt-6 flex flex-col items-center gap-3 rounded-3xl border bg-card p-5 shadow-soft sm:flex-row sm:justify-between">
+          <p className="text-sm">
+            <strong>11 a 13 de setembro de 2026</strong> · sexta a domingo · embarque em Brasília às
+            07h00
+          </p>
           <Button
             variant="thermal"
             size="lg"
@@ -248,31 +236,9 @@ function LandingPage() {
         </div>
       </Section>
 
-      {/* ROTEIRO */}
-      <Section id="roteiro" className="bg-background">
-        <SectionTitle eyebrow="Roteiro" title="Como são os seus 3 dias" />
-        <div className="grid gap-6">
-          {roteiro.map((dia) => (
-            <article key={dia.dia} className="rounded-3xl border bg-card p-6 shadow-soft md:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                {dia.dia}
-              </p>
-              <h3 className="mt-2 text-xl">{dia.titulo}</h3>
-              <ul className="mt-5 grid gap-3">
-                {dia.itens.map((it) => (
-                  <li key={it.hora + it.texto} className="flex flex-col gap-1 border-t pt-3 sm:flex-row sm:gap-6">
-                    <span className="w-40 shrink-0 text-sm font-semibold">{it.hora}</span>
-                    <span className="text-sm text-muted-foreground">{it.texto}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </Section>
 
       {/* FOTOS / ATRATIVOS */}
-      <Section className="bg-sand">
+      <Section className="bg-background">
         <SectionTitle eyebrow="Atrativos" title="Águas termais, descanso e boa companhia" />
         <div className="grid gap-4 md:grid-cols-3">
           {[
@@ -287,11 +253,12 @@ function LandingPage() {
               loading="lazy"
               width={1200}
               height={800}
-              className="h-64 w-full rounded-3xl object-cover shadow-soft"
+              className="h-44 w-full rounded-3xl object-cover shadow-soft"
             />
           ))}
         </div>
       </Section>
+
 
       {/* HOSPEDAGEM E TRANSPORTE */}
       <Section className="bg-background">
@@ -404,31 +371,32 @@ function LandingPage() {
         </div>
       </Section>
 
-      {/* CONFIANÇA */}
-      <Section className="bg-sand">
+      {/* LEAD FORM + CONFIANÇA */}
+      <Section id="contato" className="bg-sand">
         <div className="grid gap-8 rounded-3xl border bg-card p-6 shadow-soft md:grid-cols-2 md:p-10">
           <div>
-            <SectionTitle eyebrow="Quem organiza" title="Viaje com a Asa Turismo" />
-            <p className="text-sm text-muted-foreground">
-              Operamos excursões saindo de Brasília com transporte próprio credenciado, equipe de
-              acompanhamento e hospedagem em redes consolidadas de Caldas Novas. Todo passageiro
-              viaja com seguro de viagem e recebe voucher nominal antes do embarque.
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+              Fale com a Asa Turismo
             </p>
+            <h2 className="text-2xl leading-tight md:text-3xl">
+              Receba o roteiro completo e reserve sua vaga
+            </h2>
+            <ul className="mt-5 grid gap-2 text-sm text-muted-foreground">
+              {[
+                "Ônibus e motorista credenciados, com seguro de viagem",
+                "Equipe de apoio por WhatsApp antes e durante a viagem",
+                "Voucher nominal de hospedagem enviado por e-mail",
+              ].map((i) => (
+                <li key={i} className="flex gap-2">
+                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" /> {i}
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="grid content-center gap-3 text-sm">
-            {[
-              "Ônibus com documentação e motorista credenciados",
-              "Seguro de viagem para todos os passageiros",
-              "Equipe de apoio por WhatsApp antes e durante a viagem",
-              "Voucher nominal de hospedagem enviado por e-mail",
-            ].map((i) => (
-              <li key={i} className="flex gap-2">
-                <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" /> {i}
-              </li>
-            ))}
-          </ul>
+          <LeadForm origin="secao_contato" />
         </div>
       </Section>
+
 
       {/* FAQ */}
       <Section className="bg-background">
@@ -444,7 +412,7 @@ function LandingPage() {
       </Section>
 
       {/* CTA FINAL */}
-      <section id="reservar" className="relative isolate overflow-hidden px-5 py-20 md:py-28">
+      <section id="reservar" className="relative isolate overflow-hidden px-5 py-16 md:py-20">
         <div className="absolute inset-0 bg-thermal-gradient" />
         <div className="relative mx-auto w-full max-w-3xl text-center text-thermal-foreground">
           <h2 className="text-3xl md:text-5xl">Sua vaga em Caldas Novas por {PACKAGE.preco}</h2>
