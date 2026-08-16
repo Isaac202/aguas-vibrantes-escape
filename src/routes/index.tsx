@@ -462,7 +462,7 @@ function LandingPage() {
           <p className="font-display text-lg leading-none">{PACKAGE.preco}</p>
         </div>
         <Button variant="cta" size="lg" onClick={startCheckout}>
-          Reservar agora
+          Solicitar reserva
         </Button>
       </div>
       <div className="h-20 md:hidden" />
