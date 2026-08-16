@@ -413,14 +413,8 @@ function LandingPage() {
       {/* FAQ */}
       <Section className="bg-background">
         <SectionTitle eyebrow="Dúvidas frequentes" title="Perguntas antes de reservar" />
-        <Accordion type="single" collapsible className="rounded-3xl border bg-card px-6 shadow-soft">
-          {faq.map((f) => (
-            <AccordionItem key={f.q} value={f.q}>
-              <AccordionTrigger className="text-left text-base">{f.q}</AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground">{f.a}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <FaqIcons />
+
       </Section>
 
       {/* CTA FINAL */}
