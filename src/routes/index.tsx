@@ -238,7 +238,7 @@ function LandingPage() {
 
 
       {/* FOTOS / ATRATIVOS */}
-      <Section className="bg-sand">
+      <Section className="bg-background">
         <SectionTitle eyebrow="Atrativos" title="Águas termais, descanso e boa companhia" />
         <div className="grid gap-4 md:grid-cols-3">
           {[
