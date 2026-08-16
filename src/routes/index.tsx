@@ -197,19 +197,32 @@ function LandingPage() {
         </div>
       </header>
 
-
-
-
-      {/* PRÓXIMA SAÍDA */}
-      <Section className="bg-sand">
-        <SectionTitle eyebrow="Próximas saídas" title="Data confirmada de embarque" />
-        <div className="flex flex-col gap-6 rounded-3xl border bg-card p-6 shadow-soft md:flex-row md:items-center md:justify-between md:p-8">
-          <div>
-            <p className="font-display text-2xl">11 a 13 de setembro de 2026</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Sexta a domingo · 3 dias e 2 noites · embarque em Brasília às 07h00
-            </p>
-          </div>
+      {/* ROTEIRO */}
+      <Section id="roteiro" className="bg-sand">
+        <SectionTitle eyebrow="Roteiro" title="Como são os seus 3 dias" />
+        <div className="grid gap-4 md:grid-cols-3">
+          {roteiro.map((dia) => (
+            <article key={dia.dia} className="rounded-3xl border bg-card p-5 shadow-soft">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                {dia.dia}
+              </p>
+              <h3 className="mt-2 text-lg leading-snug">{dia.titulo}</h3>
+              <ul className="mt-4 grid gap-2">
+                {dia.itens.map((it) => (
+                  <li key={it.hora + it.texto} className="border-t pt-2 text-sm">
+                    <span className="font-semibold">{it.hora}</span>{" "}
+                    <span className="text-muted-foreground">{it.texto}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <div className="mt-6 flex flex-col items-center gap-3 rounded-3xl border bg-card p-5 shadow-soft sm:flex-row sm:justify-between">
+          <p className="text-sm">
+            <strong>11 a 13 de setembro de 2026</strong> · sexta a domingo · embarque em Brasília às
+            07h00
+          </p>
           <Button
             variant="thermal"
             size="lg"
@@ -223,28 +236,6 @@ function LandingPage() {
         </div>
       </Section>
 
-      {/* ROTEIRO */}
-      <Section id="roteiro" className="bg-background">
-        <SectionTitle eyebrow="Roteiro" title="Como são os seus 3 dias" />
-        <div className="grid gap-6">
-          {roteiro.map((dia) => (
-            <article key={dia.dia} className="rounded-3xl border bg-card p-6 shadow-soft md:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                {dia.dia}
-              </p>
-              <h3 className="mt-2 text-xl">{dia.titulo}</h3>
-              <ul className="mt-5 grid gap-3">
-                {dia.itens.map((it) => (
-                  <li key={it.hora + it.texto} className="flex flex-col gap-1 border-t pt-3 sm:flex-row sm:gap-6">
-                    <span className="w-40 shrink-0 text-sm font-semibold">{it.hora}</span>
-                    <span className="text-sm text-muted-foreground">{it.texto}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </Section>
 
       {/* FOTOS / ATRATIVOS */}
       <Section className="bg-sand">
