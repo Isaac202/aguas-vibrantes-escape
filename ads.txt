@@ -1,0 +1,74 @@
+Guia de implementação — Rastreamento de conversão "Compra" (Caldas Novas)
+Conta: Gestão BeeAI | Conversion ID: AW-18294112878 | Ação de conversão: Compra (rótulo U83sCNrTqeIcEO6EqJNE)
+
+A ação de conversão já está criada no Google Ads, configurada como conversão primária, categoria Compra, valor dinâmico por transação (snippet de evento), moeda BRL. Falta apenas instalar os dois códigos abaixo no site — isso é o que garante que só contem como conversão os pagamentos confirmados pelo Asaas, nunca o clique em "Comprar".
+1. Tag base do Google (instalar em TODAS as páginas do site)
+Cole logo após a abertura da tag <head> de todas as páginas de caldasnovas.asaturismo.com (inclusive a página inicial, a de checkout e a de confirmação):
+
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18294112878"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18294112878');
+
+</script>
+
+Essa tag sozinha não registra conversão nenhuma — ela só habilita a medição. Sem ela, o snippet de evento abaixo não funciona.
+2. Snippet de evento (instalar SOMENTE na página de pagamento confirmado)
+<!-- Event snippet para a página de pagamento CONFIRMADO -->
+
+<script>
+
+  gtag('event', 'conversion', {
+
+      'send_to': 'AW-18294112878/U83sCNrTqeIcEO6EqJNE',
+
+      'value': VALOR_REAL_DA_TRANSACAO,
+
+      'currency': 'BRL',
+
+      'transaction_id': 'ID_UNICO_DO_PEDIDO'
+
+  });
+
+</script>
+Regra inegociável de onde disparar isso
+Este snippet só pode disparar na página para a qual o Asaas redireciona depois que o pagamento é confirmado (o "obrigado"/sucesso pós-pagamento). Ele não pode disparar em nenhum destes momentos:
+
+clique no botão "Comprar" / abrir o checkout
+geração de PIX ou boleto (antes da confirmação)
+clique para WhatsApp
+qualquer outra etapa intermediária do funil
+
+Se o Asaas te dá algum parâmetro na URL de retorno indicando status (ex. status=confirmed ou similar), o ideal é o servidor/JS conferir esse status antes de disparar o evento — assim, mesmo que o usuário caia nessa página por engano ou dê refresh, você evita registrar conversão duplicada ou falsa.
+Preenchendo os valores dinamicamente
+VALOR_REAL_DA_TRANSACAO: use o valor efetivamente pago (R$ 620 por pessoa, ajustado conforme a quantidade de passageiros do pedido — ex. 2 pessoas ≈ R$ 1.240, 3 pessoas ≈ R$ 1.860 — confirme os valores exatos com a tabela de preços vigente do pacote).
+ID_UNICO_DO_PEDIDO: use o ID da transação/pedido gerado no seu sistema ou pelo Asaas, para evitar contagem duplicada em caso de recarregamento de página.
+Evitar conversão duplicada
+Como a contagem está configurada como "Uma" por clique (padrão para Compra), o principal risco é o snippet disparar de novo se o usuário atualizar a página de confirmação. Usar um transaction_id único por pedido resolve isso — o Google Ads deduplica automaticamente com base nesse campo.
+3. Preservar o GCLID através do redirecionamento para o Asaas
+Como o fluxo é: anúncio → site → redireciona para o Asaas → Asaas redireciona de volta ao site, existe risco de perder o parâmetro gclid (usado para atribuir a conversão ao clique do anúncio) nessa ida e volta. Recomendo:
+
+Ao carregar qualquer página do site com ?gclid=... na URL, salvar esse valor em um cookie de primeira parte ou em localStorage/parâmetro persistido (o Google tag já faz isso automaticamente para o linker, mas se o domínio do Asaas for diferente do seu, o auto-linking do gtag pode não preservar entre domínios sem configuração extra).
+Se o Asaas permitir, incluir esse gclid salvo como parâmetro customizado na URL de retorno (ex. ?transaction_id=123&gclid=...), para reforçar a atribuição.
+Testar uma compra real (ou simulada) e conferir, depois de 1–2 dias, se a conversão aparece corretamente atribuída à campanha em Google Ads > Conversões.
+4. Testar a instalação
+Depois de publicar as mudanças no site:
+
+Voltar em Google Ads > Ferramentas > Conversões > Resumo > aba "Compra" e usar o botão "Testar instalação" (ele verifica se a tag base está detectável no site).
+Fazer uma compra de teste de ponta a ponta (clique no anúncio ou simule com gclid na URL → checkout → Asaas → confirmação) e conferir em Google Ads se a conversão aparece em até 24h (pode levar algumas horas para refletir).
+Opcional, mas recomendado pelo briefing: ativar Conversões otimizadas (Enhanced Conversions) para Web, que melhora a atribuição usando dados como e-mail/telefone do comprador de forma hasheada — pode ser configurado depois, na mesma tela de "Compra" em Google Ads, uma vez que o básico esteja funcionando.
+5. Status atual
+Ação de conversão "Compra" criada e configurada no Google Ads.
+Tag base e snippet de evento acima ainda não instalados no site — essa parte depende do acesso ao código que você confirmou ter.
+A campanha "Caldas Novas - Search - Saída Brasília" ainda está em rascunho, não publicada (a tentativa de publicação anterior foi interrompida antes de concluir). Ela está pronta para publicar assim que você quiser.
+
+Sugestão: instalar os dois snippets e validar com uma compra de teste antes de publicar a campanha, para já nascer medindo conversão corretamente. Mas se preferir publicar agora e instalar a tag em paralelo, também funciona — o gasto só começa a contar assim que o anúncio for aprovado e começar a rodar.
