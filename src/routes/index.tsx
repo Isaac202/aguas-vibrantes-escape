@@ -23,9 +23,6 @@ import {
   X,
 } from "lucide-react";
 import heroImg from "@/assets/hero-caldas.jpg";
-import busImg from "@/assets/bus-dd.jpg";
-import hotelImg from "@/assets/hotel-suite.jpg";
-import poolImg from "@/assets/thermal-pool.jpg";
 import quartoAsset from "@/assets/boulevard-quarto.jpg.asset.json";
 import piscinaAsset from "@/assets/boulevard-piscina.jpg.asset.json";
 import bufeAsset from "@/assets/boulevard-bufe.jpg.asset.json";
