@@ -195,35 +195,8 @@ function LandingPage() {
         </div>
       </header>
 
-      {/* POR QUE CALDAS NOVAS */}
-      <Section className="bg-background">
-        <SectionTitle eyebrow="Por que Caldas Novas" title="A maior estância hidrotermal do mundo" />
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              icon: Thermometer,
-              t: "Águas de 37°C a 57°C",
-              d: "As águas brotam naturalmente aquecidas, sem qualquer aquecimento artificial.",
-            },
-            {
-              icon: Sparkles,
-              t: "Reconhecida internacionalmente",
-              d: "A região é referenciada pela NASA e pela UNESCO como sítio geológico relevante.",
-            },
-            {
-              icon: Waves,
-              t: "Lazer completo",
-              d: "Parques aquáticos, spas e piscinas termais dentro da própria estrutura hoteleira.",
-            },
-          ].map(({ icon: Icon, t, d }) => (
-            <article key={t} className="rounded-3xl border bg-card p-6 shadow-soft">
-              <Icon className="size-6 text-primary" />
-              <h3 className="mt-4 text-lg">{t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{d}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
+
+
 
       {/* PRÓXIMA SAÍDA */}
       <Section className="bg-sand">
