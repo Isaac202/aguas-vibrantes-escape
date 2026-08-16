@@ -451,17 +451,18 @@ function LandingPage() {
       </footer>
 
       {/* Barra fixa de conversão */}
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t bg-card/95 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-3 px-4 py-3">
-          <div>
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t bg-card/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
+        <div className="mx-auto grid w-full max-w-5xl grid-cols-[minmax(0,auto)_1fr] items-center gap-3 px-4 py-3 sm:flex sm:justify-between">
+          <div className="min-w-0">
             <p className="text-xs text-muted-foreground">por pessoa</p>
             <p className="font-display text-lg leading-none">{PACKAGE.preco}</p>
           </div>
-          <Button variant="cta" size="lg" onClick={startCheckout}>
+          <Button variant="cta" size="lg" className="w-full sm:w-auto" onClick={startCheckout}>
             Solicitar reserva
           </Button>
         </div>
       </div>
+
       <div className="h-20" />
     </main>
   );
