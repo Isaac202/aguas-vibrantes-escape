@@ -26,6 +26,9 @@ import heroImg from "@/assets/hero-caldas.jpg";
 import busImg from "@/assets/bus-dd.jpg";
 import hotelImg from "@/assets/hotel-suite.jpg";
 import poolImg from "@/assets/thermal-pool.jpg";
+import quartoAsset from "@/assets/boulevard-quarto.jpg.asset.json";
+import piscinaAsset from "@/assets/boulevard-piscina.jpg.asset.json";
+import bufeAsset from "@/assets/boulevard-bufe.jpg.asset.json";
 import { PACKAGE, faq, incluido, naoIncluido, roteiro } from "@/lib/lp-data";
 import { track } from "@/lib/tracking";
 import { LeadForm } from "@/components/LeadForm";
@@ -248,22 +251,41 @@ function LandingPage() {
 
       {/* FOTOS / ATRATIVOS */}
       <Section className="bg-background">
-        <SectionTitle eyebrow="Atrativos" title="Águas termais, descanso e boa companhia" />
+        <SectionTitle
+          eyebrow="Atrativos"
+          title="Fotos reais do Boulevard Suíte Hotel, em Caldas Novas"
+        />
         <div className="grid gap-4 md:grid-cols-3">
           {[
-            { src: poolImg, alt: "Grupo relaxando em piscina de água termal ao anoitecer" },
-            { src: busImg, alt: "Ônibus executivo Double Decker DD em rodovia ao amanhecer" },
-            { src: hotelImg, alt: "Apartamento triplo em hotel de Caldas Novas com vista para as piscinas" },
+            {
+              src: quartoAsset.url,
+              alt: "Apartamento do Boulevard Suíte Hotel com sofá, cozinha compacta e frigobar",
+              legenda: "Apartamento do hotel",
+            },
+            {
+              src: piscinaAsset.url,
+              alt: "Piscina termal do Boulevard Suíte Hotel com ilha de coqueiros e espreguiçadeiras",
+              legenda: "Piscinas termais",
+            },
+            {
+              src: bufeAsset.url,
+              alt: "Buffet do restaurante do Boulevard Suíte Hotel com frutas, pães e pratos quentes",
+              legenda: "Café da manhã em buffet",
+            },
           ].map((img) => (
-            <img
-              key={img.alt}
-              src={img.src}
-              alt={img.alt}
-              loading="lazy"
-              width={1200}
-              height={800}
-              className="h-44 w-full rounded-3xl object-cover shadow-soft"
-            />
+            <figure key={img.alt}>
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                width={1600}
+                height={1066}
+                className="h-48 w-full rounded-3xl object-cover shadow-soft"
+              />
+              <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+                {img.legenda}
+              </figcaption>
+            </figure>
           ))}
         </div>
       </Section>
