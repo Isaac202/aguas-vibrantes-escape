@@ -28,6 +28,7 @@ export function ReserveDialog({
   cupom?: string | null;
 }) {
   const criarCheckout = useServerFn(createReservationCheckout);
+  const enviarLead = useServerFn(sendLeadEmail);
   const [nome, setNome] = useState("");
   const [whats, setWhats] = useState("");
   const [email, setEmail] = useState("");
