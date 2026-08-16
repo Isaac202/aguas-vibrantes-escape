@@ -15,6 +15,7 @@ import { PACKAGE } from "@/lib/lp-data";
 import { track } from "@/lib/tracking";
 import { createReservationCheckout } from "@/lib/asaas.functions";
 import { sendLeadEmail } from "@/lib/leads.functions";
+import { getGclid } from "@/lib/gclid";
 
 export function ReserveDialog({
   open,
@@ -55,7 +56,14 @@ export function ReserveDialog({
     }).catch(() => {});
     try {
       const { url } = await criarCheckout({
-        data: { nome, whatsapp: whats, email, passengers, cupom: cupom ?? null },
+        data: {
+          nome,
+          whatsapp: whats,
+          email,
+          passengers,
+          cupom: cupom ?? null,
+          gclid: getGclid(),
+        },
       });
       track("begin_checkout", { value: total, passengers, items: [PACKAGE.destino] });
       window.location.href = url;

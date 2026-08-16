@@ -1,94 +1,57 @@
 # Caldas Novas Escape
 
-Preciso criar uma Lp otimizada como pede o documento em anexo para a seguinte excursao de viagem que vai sair de Brasilia: DESTINO
+Landing page da excursão "Caldas Novas Vibrante" (Asa Turismo), saindo de Brasília.
 
-Caldas Novas Vibrante
+- **Destino**: Caldas Novas, GO
+- **Preço**: R$ 620,00 por pessoa
+- **Datas**: 11 a 13/09/2026
 
-PREÇO
+## Roteiro
 
-620,00
+**Dia 1 – 11/09 (sexta-feira): chegada em Caldas Novas**
 
-DATA da Excursão
+| Horário | Atividade | Detalhes |
+| --- | --- | --- |
+| 07h00 | Embarque | Brasília — ponto de encontro definido |
+| 07h30 | Saída | Ônibus executivo Double Decker DD |
+| 07h30–12h30 | Viagem | Com parada técnica para café/banheiro |
+| 12h30 | Check-in | Hotel Boulevard Suítes (rede diRoma), piscinas termais |
+| 13h00–14h30 | Livre | Almoço |
+| 15h00 | Livre | Piscinas termais do complexo |
 
-Indo 11/09 volta 13/09
+**Dia 2 – 12/09 (sábado)**: dia livre para lazer.
 
-DESCRIÇÃO
+**Dia 3 – 13/09 (domingo)**: retorno para Brasília às 15h.
 
-Por que Caldas Novas?
+Hospedagem em apartamento triplo compartilhado no Hotel Boulevard Suítes (ou unidade
+equivalente da rede diRoma). Transporte em ônibus executivo Double Decker DD, com poltronas
+reclináveis, dois andares, ar-condicionado, banheiro e TV a bordo, seguro total e motorista
+credenciado.
 
-Maior estância hidrotermal do mundo, com águas entre 37°C e 57°C que brotam naturalmente 
+## Desenvolvimento
 
-Reconhecida pela NASA e UNESCO como importante sítio geológico 
-
-Infraestrutura hoteleira completa, com parques aquáticos, spas e opções de lazer integrado 
-
-Esta excursão  de 2 dias é ideal para quem trabalha muito e dispõe de pouco tempo para viajar
-
-Roteiro Detalhado (11 a 13/09/2026)
-
-Dia 1 – 11/09 (Quarta-feira): Chegada em Caldas Novas
-
-Horário	Atividade	Detalhes
-
-07h00	Embarque	Brasília - ponto de encontro definido
-
-07h30	Saída	        Ônibus executivo Double Decker DD
-
-07h30-12h30	        Viagem	Com parada técnica para café/banheiro
-
-12h30	Check-in	Hotel Thermas diRoma (excelente infraestrutura de lazer, piscinas termais privativas) 
-
-13h00-14h30	        Livre para o Almoço
-
-15h00             	        Livre
-
-Dia 2 – 12/09 (sábado) Dia Livre para lazer
-
-Dia 3 – 13/09 (domingo) retorno para Brasília as 15 horas
-
-Hospedagem (compartilhada em apto triplo)
-
-Hotel Boulevard Suítes (ou unidade equivalente da rede diRoma)
-
-Transporte
-
-Ônibus Executivo Double Decker DD
-
-Conforto premium com poltronas reclináveis
-
-Dois andares com visão panorâmica
-
-Ar-condicionado, banheiro e TV a bordo
-
-Seguro total e motorista credenciado
-
-📍 Caldas Novas, 11 a 13/09/2026
-
-🌊 Águas termais, integração e capacitação em saúde mental
-
-🚌 Ônibus executivo Double Decker DD
-
-🏨 Hotel Boulevard Suítes (infraestrutura completa)
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://aguas-vibrantes-escape.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/00baecef-7e68-4db8-b00a-56dc0f84f82b).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Stack: TanStack Start + React + Tailwind CSS, rodando sobre Bun.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+bun install
+bun run dev
 ```
+
+Outros comandos:
+
+```sh
+bun run build      # build de produção
+bun run preview    # servir o build de produção localmente
+bun run lint        # eslint
+bun run format      # prettier --write
+```
+
+### Variáveis de ambiente
+
+- `ASAAS_API_KEY` — chave de API do Asaas usada para gerar os links de pagamento (`src/lib/asaas.functions.ts`). Use uma chave `sandbox`/`hmlg` em desenvolvimento.
+
+### Rastreamento de conversão (Google Ads)
+
+O evento de conversão "Compra" (`AW-18294112878/U83sCNrTqeIcEO6EqJNE`) só é disparado depois
+que o Asaas confirma o pagamento, na página `/confirmacao`, e nunca no clique de "Comprar" ou
+na geração do PIX/boleto. Ver `src/lib/gtag.ts`, `src/lib/gclid.ts` e `src/routes/confirmacao.tsx`.

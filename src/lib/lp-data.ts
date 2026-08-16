@@ -1,3 +1,5 @@
+export const SITE_URL = "https://caldasnovas.asaturismo.com";
+
 export const PACKAGE = {
   destino: "Caldas Novas Vibrante",
   origem: "Brasília - DF",
