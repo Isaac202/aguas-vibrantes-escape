@@ -449,17 +449,19 @@ function LandingPage() {
         </p>
       </footer>
 
-      {/* Barra fixa mobile */}
-      <div className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-between gap-3 border-t bg-card/95 px-4 py-3 backdrop-blur md:hidden">
-        <div>
-          <p className="text-xs text-muted-foreground">por pessoa</p>
-          <p className="font-display text-lg leading-none">{PACKAGE.preco}</p>
+      {/* Barra fixa de conversão */}
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t bg-card/95 backdrop-blur">
+        <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-3 px-4 py-3">
+          <div>
+            <p className="text-xs text-muted-foreground">por pessoa</p>
+            <p className="font-display text-lg leading-none">{PACKAGE.preco}</p>
+          </div>
+          <Button variant="cta" size="lg" onClick={startCheckout}>
+            Solicitar reserva
+          </Button>
         </div>
-        <Button variant="cta" size="lg" onClick={startCheckout}>
-          Solicitar reserva
-        </Button>
       </div>
-      <div className="h-20 md:hidden" />
+      <div className="h-20" />
     </main>
   );
 }
