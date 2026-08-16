@@ -231,7 +231,7 @@ function LandingPage() {
       <Section className="bg-background">
         <SectionTitle
           eyebrow="Atrativos"
-          title="Fotos reais do Boulevard Suíte Hotel, em Caldas Novas"
+          title="Boulevard Suíte Hotel, em Caldas Novas"
         />
         <div className="grid gap-4 md:grid-cols-3">
           {[
