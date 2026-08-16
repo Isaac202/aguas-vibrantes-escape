@@ -17,7 +17,7 @@ export function RoteiroIcons() {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-3 sm:gap-5">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-5">
         {roteiro.map((d, i) => {
           const Icon = icons[i] ?? BusFront;
           return (
@@ -25,20 +25,23 @@ export function RoteiroIcons() {
               key={d.dia}
               type="button"
               onClick={() => setOpen(i)}
-              className="group flex flex-col items-center gap-3 rounded-3xl border bg-card p-5 text-center shadow-soft transition hover:shadow-lift"
+              className="group flex items-center gap-4 rounded-3xl border bg-card p-4 text-left shadow-soft transition hover:shadow-lift sm:flex-col sm:items-center sm:p-5 sm:text-center"
             >
-              <span className="flex size-14 items-center justify-center rounded-2xl bg-accent/10 text-accent transition group-hover:bg-accent group-hover:text-accent-foreground">
-                <Icon className="size-7" />
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent transition group-hover:bg-accent group-hover:text-accent-foreground sm:size-14">
+                <Icon className="size-6 sm:size-7" />
               </span>
-              <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                {d.dia}
+              <span className="min-w-0 sm:flex sm:flex-col sm:gap-2">
+                <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                  {d.dia}
+                </span>
+                <span className="block text-sm leading-snug">{d.titulo}</span>
+                <span className="block text-xs text-muted-foreground underline">ver detalhes</span>
               </span>
-              <span className="text-sm leading-snug">{d.titulo}</span>
-              <span className="text-xs text-muted-foreground underline">ver detalhes</span>
             </button>
           );
         })}
       </div>
+
 
       <Dialog open={open !== null} onOpenChange={(o) => !o && setOpen(null)}>
         <DialogContent className="max-h-[85vh] overflow-y-auto">
