@@ -14,6 +14,7 @@ import { Loader2, ShieldCheck } from "lucide-react";
 import { PACKAGE } from "@/lib/lp-data";
 import { track } from "@/lib/tracking";
 import { createReservationCheckout } from "@/lib/asaas.functions";
+import { sendLeadEmail } from "@/lib/leads.functions";
 
 export function ReserveDialog({
   open,
@@ -27,6 +28,7 @@ export function ReserveDialog({
   cupom?: string | null;
 }) {
   const criarCheckout = useServerFn(createReservationCheckout);
+  const enviarLead = useServerFn(sendLeadEmail);
   const [nome, setNome] = useState("");
   const [whats, setWhats] = useState("");
   const [email, setEmail] = useState("");
@@ -40,6 +42,17 @@ export function ReserveDialog({
     setLoading(true);
     setErro(null);
     track("generate_lead", { origin: "reserva", value: total, cupom: cupom ?? null });
+    void enviarLead({
+      data: {
+        nome,
+        whatsapp: whats,
+        email: email || null,
+        origem: "solicitar_reserva",
+        cupom: cupom ?? null,
+        passengers,
+        observacao: `Total estimado R$ ${total},00`,
+      },
+    }).catch(() => {});
     try {
       const { url } = await criarCheckout({
         data: { nome, whatsapp: whats, email, passengers, cupom: cupom ?? null },
@@ -53,6 +66,7 @@ export function ReserveDialog({
       setLoading(false);
     }
   };
+
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

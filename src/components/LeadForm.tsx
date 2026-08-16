@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Check } from "lucide-react";
 import { PACKAGE } from "@/lib/lp-data";
 import { track } from "@/lib/tracking";
+import { sendLeadEmail } from "@/lib/leads.functions";
 
 export function LeadForm({
   origin,
@@ -17,6 +19,7 @@ export function LeadForm({
   compact?: boolean;
   onDone?: () => void;
 }) {
+  const enviarLead = useServerFn(sendLeadEmail);
   const [nome, setNome] = useState("");
   const [whats, setWhats] = useState("");
   const [email, setEmail] = useState("");
@@ -26,6 +29,17 @@ export function LeadForm({
     e.preventDefault();
     if (cupom) localStorage.setItem("asa-cupom", cupom);
     track("generate_lead", { origin, cupom: cupom ?? null, value: PACKAGE.precoNumero });
+    void enviarLead({
+      data: {
+        nome,
+        whatsapp: whats,
+        email: email || null,
+        origem: origin,
+        cupom: cupom ?? null,
+        passengers: null,
+        observacao: null,
+      },
+    }).catch(() => {});
     setSent(true);
     onDone?.();
     const msg = `Olá! Sou ${nome} (${whats}${email ? `, ${email}` : ""}). Quero informações sobre a excursão ${PACKAGE.destino} — ${PACKAGE.datasLabel}, saindo de Brasília.${cupom ? ` Cupom ${cupom} (10% de desconto).` : ""}`;
@@ -35,6 +49,7 @@ export function LeadForm({
       "noopener",
     );
   };
+
 
   if (sent) {
     return (
