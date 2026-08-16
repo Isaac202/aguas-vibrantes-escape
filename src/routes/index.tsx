@@ -18,7 +18,6 @@ import {
   Minus,
   Plus,
   ShieldCheck,
-  Sparkles,
   Thermometer,
   Waves,
   X,
@@ -29,6 +28,8 @@ import hotelImg from "@/assets/hotel-suite.jpg";
 import poolImg from "@/assets/thermal-pool.jpg";
 import { PACKAGE, faq, incluido, naoIncluido, roteiro } from "@/lib/lp-data";
 import { track } from "@/lib/tracking";
+import { LeadForm } from "@/components/LeadForm";
+import { DiscountPopup } from "@/components/DiscountPopup";
 
 const TITLE = "Caldas Novas 3 Dias Saindo de Brasília | R$ 620 por Pessoa";
 const DESCRIPTION =
@@ -62,7 +63,7 @@ function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`px-5 py-16 md:py-24 ${className}`}>
+    <section id={id} className={`px-5 py-12 md:py-16 ${className}`}>
       <div className="mx-auto w-full max-w-5xl">{children}</div>
     </section>
   );
@@ -94,6 +95,7 @@ function LandingPage() {
 
   return (
     <main>
+      <DiscountPopup />
       {/* HERO */}
       <header className="relative isolate overflow-hidden">
         <img
@@ -419,7 +421,7 @@ function LandingPage() {
       </Section>
 
       {/* CTA FINAL */}
-      <section id="reservar" className="relative isolate overflow-hidden px-5 py-20 md:py-28">
+      <section id="reservar" className="relative isolate overflow-hidden px-5 py-16 md:py-20">
         <div className="absolute inset-0 bg-thermal-gradient" />
         <div className="relative mx-auto w-full max-w-3xl text-center text-thermal-foreground">
           <h2 className="text-3xl md:text-5xl">Sua vaga em Caldas Novas por {PACKAGE.preco}</h2>
