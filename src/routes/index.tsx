@@ -209,24 +209,8 @@ function LandingPage() {
       {/* ROTEIRO */}
       <Section id="roteiro" className="bg-sand">
         <SectionTitle eyebrow="Roteiro" title="Como são os seus 3 dias" />
-        <div className="grid gap-4 md:grid-cols-3">
-          {roteiro.map((dia) => (
-            <article key={dia.dia} className="rounded-3xl border bg-card p-5 shadow-soft">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                {dia.dia}
-              </p>
-              <h3 className="mt-2 text-lg leading-snug">{dia.titulo}</h3>
-              <ul className="mt-4 grid gap-2">
-                {dia.itens.map((it) => (
-                  <li key={it.hora + it.texto} className="border-t pt-2 text-sm">
-                    <span className="font-semibold">{it.hora}</span>{" "}
-                    <span className="text-muted-foreground">{it.texto}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
+        <RoteiroIcons />
+
         <div className="mt-6 flex flex-col items-center gap-3 rounded-3xl border bg-card p-5 shadow-soft sm:flex-row sm:justify-between">
           <p className="text-sm">
             <strong>11 a 13 de setembro de 2026</strong> · sexta a domingo · embarque em Brasília às
