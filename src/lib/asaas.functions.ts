@@ -49,6 +49,7 @@ export const createReservationCheckout = createServerFn({ method: "POST" })
         billingType: "UNDEFINED",
         chargeType: "INSTALLMENT",
         value,
+        dueDateLimitDays: 3,
         maxInstallmentCount: 6,
         notificationEnabled: true,
         externalReference: transactionId,
