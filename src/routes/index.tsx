@@ -228,6 +228,47 @@ function LandingPage() {
       </Section>
 
 
+      {/* PAGAMENTO, EMBARQUE, CANCELAMENTO */}
+      <Section className="bg-background">
+        <SectionTitle eyebrow="Condições" title="Pagamento, embarque e cancelamento" />
+        <div className="grid gap-6 md:grid-cols-3">
+          <article className="rounded-3xl border bg-card p-6 shadow-soft">
+            <CreditCard className="size-6 text-primary" />
+            <h3 className="mt-4 text-lg">Formas de pagamento</h3>
+            <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
+              <li>PIX à vista com confirmação imediata</li>
+              <li>Cartão de crédito em até 6x</li>
+              <li>Reserva confirmada só após pagamento aprovado</li>
+              <li>Comprovante e voucher enviados por e-mail</li>
+            </ul>
+          </article>
+          <article className="rounded-3xl border bg-card p-6 shadow-soft">
+            <MapPin className="size-6 text-primary" />
+            <h3 className="mt-4 text-lg">Embarque</h3>
+            <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
+              <li>Estacionamento do Hotel Nacional, Brasília - DF</li>
+              <li>Chegada ao ponto às 09h00, saída às 09h30</li>
+              <li>Documento oficial com foto obrigatório</li>
+            </ul>
+          </article>
+          <article className="rounded-3xl border bg-card p-6 shadow-soft">
+            <ShieldCheck className="size-6 text-primary" />
+            <h3 className="mt-4 text-lg">Cancelamento</h3>
+            <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
+              <li>+20 dias: reembolso de 100% menos 10% administrativo</li>
+              <li>20 a 10 dias: sem reembolso, com transferência de vaga gratuita</li>
+              <li>-10 dias: sem reembolso, com transferência de vaga gratuita</li>
+            </ul>
+          </article>
+        </div>
+      </Section>
+
+      {/* FAQ */}
+      <Section className="bg-sand">
+        <SectionTitle eyebrow="Dúvidas frequentes" title="Perguntas antes de reservar" />
+        <FaqIcons />
+      </Section>
+
       {/* FOTOS / ATRATIVOS */}
       <Section className="bg-background">
         <SectionTitle
@@ -271,7 +312,7 @@ function LandingPage() {
 
 
       {/* HOSPEDAGEM E TRANSPORTE */}
-      <Section className="bg-background">
+      <Section className="bg-sand">
         <SectionTitle eyebrow="Hospedagem e transporte" title="Onde você dorme e como você viaja" />
         <div className="grid gap-6 md:grid-cols-2">
           <article className="rounded-3xl border bg-card p-6 shadow-soft">
@@ -319,7 +360,7 @@ function LandingPage() {
       </Section>
 
       {/* INCLUSÕES */}
-      <Section className="bg-sand">
+      <Section className="bg-background">
         <SectionTitle eyebrow="Inclusões" title="O que está e o que não está incluído" />
         <div className="grid gap-6 md:grid-cols-2">
           <article className="rounded-3xl border bg-card p-6 shadow-soft">
@@ -340,41 +381,6 @@ function LandingPage() {
                   <X className="mt-0.5 size-4 shrink-0 text-muted-foreground" /> {i}
                 </li>
               ))}
-            </ul>
-          </article>
-        </div>
-      </Section>
-
-      {/* PAGAMENTO, EMBARQUE, CANCELAMENTO */}
-      <Section className="bg-background">
-        <SectionTitle eyebrow="Condições" title="Pagamento, embarque e cancelamento" />
-        <div className="grid gap-6 md:grid-cols-3">
-          <article className="rounded-3xl border bg-card p-6 shadow-soft">
-            <CreditCard className="size-6 text-primary" />
-            <h3 className="mt-4 text-lg">Formas de pagamento</h3>
-            <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
-              <li>PIX à vista com confirmação imediata</li>
-              <li>Cartão de crédito em até 6x</li>
-              <li>Reserva confirmada só após pagamento aprovado</li>
-              <li>Comprovante e voucher enviados por e-mail</li>
-            </ul>
-          </article>
-          <article className="rounded-3xl border bg-card p-6 shadow-soft">
-            <MapPin className="size-6 text-primary" />
-            <h3 className="mt-4 text-lg">Embarque</h3>
-            <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
-              <li>Estacionamento do Hotel Nacional, Brasília - DF</li>
-              <li>Chegada ao ponto às 09h00, saída às 09h30</li>
-              <li>Documento oficial com foto obrigatório</li>
-            </ul>
-          </article>
-          <article className="rounded-3xl border bg-card p-6 shadow-soft">
-            <ShieldCheck className="size-6 text-primary" />
-            <h3 className="mt-4 text-lg">Cancelamento</h3>
-            <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
-              <li>+20 dias: reembolso de 100% menos 10% administrativo</li>
-              <li>20 a 10 dias: sem reembolso, com transferência de vaga gratuita</li>
-              <li>-10 dias: sem reembolso, com transferência de vaga gratuita</li>
             </ul>
           </article>
         </div>
@@ -404,14 +410,6 @@ function LandingPage() {
           </div>
           <LeadForm origin="secao_contato" />
         </div>
-      </Section>
-
-
-      {/* FAQ */}
-      <Section className="bg-background">
-        <SectionTitle eyebrow="Dúvidas frequentes" title="Perguntas antes de reservar" />
-        <FaqIcons />
-
       </Section>
 
       {/* CTA FINAL */}

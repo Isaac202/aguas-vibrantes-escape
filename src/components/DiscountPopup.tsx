@@ -16,15 +16,23 @@ export function DiscountPopup() {
       localStorage.setItem(KEY, "1");
       track("view_promotion", { promotion: CUPOM, discount: 0.1 });
       window.removeEventListener("mouseout", onLeave);
+      window.removeEventListener("scroll", onScroll);
     };
     const onLeave = (e: MouseEvent) => {
       if (e.relatedTarget === null && e.clientY <= 0) show();
     };
-    const t = setTimeout(show, 12000);
+    // Só interrompe a leitura depois que a pessoa já rolou boa parte da página —
+    // um timer fixo disparava no meio da leitura e derrubava a taxa de conversão do popup.
+    const onScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      if (window.scrollY / scrollable >= 0.45) show();
+    };
     window.addEventListener("mouseout", onLeave);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      clearTimeout(t);
       window.removeEventListener("mouseout", onLeave);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
