@@ -144,8 +144,11 @@ function LandingPage() {
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">
                   Por pessoa, em apto triplo
                 </p>
-                <p className="font-display text-4xl">{PACKAGE.preco}</p>
-                <p className="text-sm text-muted-foreground">{PACKAGE.parcelas}</p>
+                <p className="font-display text-4xl">
+                  {PACKAGE.precoParcela}{" "}
+                  <span className="text-xl font-normal">em {PACKAGE.parcelasQtd}x</span>
+                </p>
+                <p className="text-sm text-muted-foreground">ou {PACKAGE.preco} à vista</p>
               </div>
               <div className="flex gap-4 text-sm text-muted-foreground sm:block sm:text-right">
                 <p>Ida {PACKAGE.ida}</p>

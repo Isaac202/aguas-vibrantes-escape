@@ -6,6 +6,8 @@ export const PACKAGE = {
   duracao: "3 dias e 2 noites",
   precoNumero: 620,
   preco: "R$ 620",
+  precoParcela: "R$ 103,33",
+  parcelasQtd: 6,
   ida: "11/09/2026",
   volta: "13/09/2026",
   datasLabel: "11 a 13 de setembro de 2026",
