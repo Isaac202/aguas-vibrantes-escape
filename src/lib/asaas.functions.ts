@@ -1,6 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { SITE_URL } from "./lp-data";
 
 function asaasBase(apiKey: string) {
   const isSandbox = apiKey.includes("hmlg") || apiKey.includes("sandbox");
@@ -33,10 +32,9 @@ export const createReservationCheckout = createServerFn({ method: "POST" })
     // o Asaas não garante parâmetros próprios na URL de retorno.
     const transactionId = crypto.randomUUID();
 
-    const successUrl = new URL("/confirmacao", SITE_URL);
-    successUrl.searchParams.set("tid", transactionId);
-    if (data.gclid) successUrl.searchParams.set("gclid", data.gclid);
-
+    // TODO: reativar o redirecionamento automático (callback.successUrl/autoRedirect)
+    // assim que o campo "Site" salvar de verdade em Asaas > Minha Conta > Informações —
+    // sem isso a API rejeita a criação do link com "Não há nenhum domínio configurado".
     const res = await fetch(`${baseUrl}/paymentLinks`, {
       method: "POST",
       headers: {
@@ -53,7 +51,6 @@ export const createReservationCheckout = createServerFn({ method: "POST" })
         maxInstallmentCount: 6,
         notificationEnabled: true,
         externalReference: transactionId,
-        callback: { successUrl: successUrl.toString(), autoRedirect: true },
       }),
     });
 
