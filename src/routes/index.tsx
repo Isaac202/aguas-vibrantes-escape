@@ -20,9 +20,9 @@ import {
   X,
 } from "lucide-react";
 import heroImg from "@/assets/hero-caldas.jpg";
-import quartoAsset from "@/assets/boulevard-quarto.jpg.asset.json";
-import piscinaAsset from "@/assets/boulevard-piscina.jpg.asset.json";
-import bufeAsset from "@/assets/boulevard-bufe.jpg.asset.json";
+import quartoImg from "@/assets/boulevard-quarto.jpg";
+import piscinaImg from "@/assets/boulevard-piscina.jpg";
+import bufeImg from "@/assets/boulevard-bufe.jpg";
 import { PACKAGE, faq, incluido, naoIncluido, roteiro } from "@/lib/lp-data";
 import { track } from "@/lib/tracking";
 import { LeadForm } from "@/components/LeadForm";
@@ -237,17 +237,17 @@ function LandingPage() {
         <div className="grid gap-4 md:grid-cols-3">
           {[
             {
-              src: quartoAsset.url,
+              src: quartoImg,
               alt: "Apartamento do Boulevard Suíte Hotel com sofá, cozinha compacta e frigobar",
               legenda: "Apartamento do hotel",
             },
             {
-              src: piscinaAsset.url,
+              src: piscinaImg,
               alt: "Piscina termal do Boulevard Suíte Hotel com ilha de coqueiros e espreguiçadeiras",
               legenda: "Piscinas termais",
             },
             {
-              src: bufeAsset.url,
+              src: bufeImg,
               alt: "Buffet do restaurante do Boulevard Suíte Hotel com frutas, pães e pratos quentes",
               legenda: "Café da manhã em buffet",
             },
