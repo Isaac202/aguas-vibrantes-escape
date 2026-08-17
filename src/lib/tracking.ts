@@ -1,18 +1,12 @@
-type DataLayerEvent = Record<string, unknown> & { event: string };
-
-declare global {
-  interface Window {
-    dataLayer?: DataLayerEvent[];
-  }
-}
+import { gtag } from "./gtag";
 
 /**
- * Pushes secondary-conversion events to the dataLayer.
+ * Sends secondary-conversion events to GA4 (and Google Ads, same gtag.js load).
  * IMPORTANT: no purchase event is fired here — Purchase must only be fired
  * server-side / on the payment confirmation page, never on button clicks.
  */
 export function track(event: string, params: Record<string, unknown> = {}) {
-  if (typeof window === "undefined") return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event, currency: "BRL", ...params });
+  const g = gtag();
+  if (!g) return;
+  g("event", event, { currency: "BRL", ...params });
 }

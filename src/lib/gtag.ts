@@ -1,9 +1,10 @@
 export const GOOGLE_ADS_ID = "AW-18294112878";
+export const GA4_MEASUREMENT_ID = "G-LZ1WL9S6JM";
 export const PURCHASE_CONVERSION_LABEL = "U83sCNrTqeIcEO6EqJNE";
 
 type Gtag = (...args: unknown[]) => void;
 
-function gtag(): Gtag | null {
+export function gtag(): Gtag | null {
   if (typeof window === "undefined") return null;
   const w = window as unknown as { gtag?: Gtag };
   return w.gtag ?? null;

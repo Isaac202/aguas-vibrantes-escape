@@ -10,7 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { GOOGLE_ADS_ID } from "../lib/gtag";
+import { GOOGLE_ADS_ID, GA4_MEASUREMENT_ID } from "../lib/gtag";
 import { captureGclid } from "../lib/gclid";
 
 function NotFoundComponent() {
@@ -121,7 +121,8 @@ function RootShell({ children }: { children: ReactNode }) {
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GOOGLE_ADS_ID}');`,
+gtag('config', '${GOOGLE_ADS_ID}');
+gtag('config', '${GA4_MEASUREMENT_ID}');`,
           }}
         />
         {/* Microsoft Clarity — gravação de sessão e heatmap para mapear a jornada do usuário. */}
