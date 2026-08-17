@@ -23,12 +23,12 @@ export const roteiro = [
     dia: "Dia 1 — 11/09 (sexta-feira)",
     titulo: "Saída de Brasília e chegada em Caldas Novas",
     itens: [
-      { hora: "07h00", texto: "Embarque em Brasília — ponto de encontro confirmado por WhatsApp" },
-      { hora: "07h30", texto: "Saída em ônibus executivo Double Decker DD" },
-      { hora: "07h30 – 12h30", texto: "Viagem com parada técnica para café e banheiro" },
-      { hora: "12h30", texto: "Check-in no hotel da rede diRoma, com piscinas termais" },
-      { hora: "13h00 – 14h30", texto: "Tempo livre para almoço (por conta do passageiro)" },
-      { hora: "A partir das 15h00", texto: "Tarde livre nas piscinas termais do complexo" },
+      { hora: "09h00", texto: "Embarque no estacionamento do Hotel Nacional, em Brasília" },
+      { hora: "09h30", texto: "Saída em ônibus executivo Double Decker DD" },
+      { hora: "09h30 – 14h30", texto: "Viagem com parada técnica para café e banheiro" },
+      { hora: "14h30", texto: "Check-in no hotel da rede diRoma, com piscinas termais" },
+      { hora: "15h00 – 16h30", texto: "Tempo livre para almoço (por conta do passageiro)" },
+      { hora: "A partir das 17h00", texto: "Tarde livre nas piscinas termais do complexo" },
     ],
   },
   {
@@ -46,7 +46,10 @@ export const roteiro = [
     itens: [
       { hora: "Manhã", texto: "Café da manhã no hotel e tempo livre" },
       { hora: "12h00", texto: "Check-out (bagagens no guarda-volumes do hotel)" },
-      { hora: "15h00", texto: "Embarque de retorno para Brasília" },
+      {
+        hora: "14h00",
+        texto: "Embarque de retorno para Brasília, com desembarque no estacionamento do Hotel Nacional",
+      },
     ],
   },
 ];
@@ -54,7 +57,7 @@ export const roteiro = [
 export const incluido = [
   "Transporte ida e volta em ônibus executivo Double Decker DD, saindo de Brasília",
   "2 noites de hospedagem em apartamento triplo compartilhado",
-  "Hotel Boulevard Suítes ou unidade equivalente da rede diRoma",
+  "Hotel da rede diRoma",
   "Café da manhã incluído no hotel",
   "Acesso às piscinas termais da estrutura do hotel",
   "Seguro de viagem e motorista credenciado",
@@ -72,7 +75,7 @@ export const naoIncluido = [
 export const faq = [
   {
     q: "De onde sai o ônibus e a que horas?",
-    a: "A saída é de Brasília - DF, com embarque às 07h00 e partida às 07h30 do dia 11/09/2026. O ponto exato de encontro é confirmado por WhatsApp e e-mail até 48h antes da viagem.",
+    a: "A saída é do estacionamento do Hotel Nacional, em Brasília - DF, com embarque às 09h00 e partida às 09h30 do dia 11/09/2026. O desembarque de volta, no dia 13/09/2026, também é no mesmo local.",
   },
   {
     q: "O preço de R$ 620 é por pessoa?",
@@ -96,6 +99,6 @@ export const faq = [
   },
   {
     q: "E se eu precisar cancelar?",
-    a: "Cancelamentos com mais de 30 dias de antecedência têm reembolso de 100% menos taxa administrativa de 10%. Entre 30 e 15 dias, reembolso de 50%. Com menos de 15 dias não há reembolso, mas a vaga pode ser transferida para outra pessoa sem custo.",
+    a: "Cancelamentos com mais de 20 dias de antecedência têm reembolso de 100% menos taxa administrativa de 10%. Entre 20 e 10 dias, e com menos de 10 dias, não há reembolso, mas a vaga pode ser transferida para outra pessoa sem custo.",
   },
 ];

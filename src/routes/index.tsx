@@ -212,7 +212,7 @@ function LandingPage() {
         <div className="mt-6 flex flex-col items-center gap-3 rounded-3xl border bg-card p-5 shadow-soft sm:flex-row sm:justify-between">
           <p className="text-sm">
             <strong>11 a 13 de setembro de 2026</strong> · sexta a domingo · embarque em Brasília às
-            07h00
+            09h00
           </p>
           <Button
             variant="thermal"
@@ -232,23 +232,23 @@ function LandingPage() {
       <Section className="bg-background">
         <SectionTitle
           eyebrow="Atrativos"
-          title="Boulevard Suíte Hotel, em Caldas Novas"
+          title="Hotel diRoma, em Caldas Novas"
         />
         <div className="grid gap-4 md:grid-cols-3">
           {[
             {
               src: quartoImg,
-              alt: "Apartamento do Boulevard Suíte Hotel com sofá, cozinha compacta e frigobar",
+              alt: "Apartamento do hotel diRoma com sofá, cozinha compacta e frigobar",
               legenda: "Apartamento do hotel",
             },
             {
               src: piscinaImg,
-              alt: "Piscina termal do Boulevard Suíte Hotel com ilha de coqueiros e espreguiçadeiras",
+              alt: "Piscina termal do hotel diRoma com ilha de coqueiros e espreguiçadeiras",
               legenda: "Piscinas termais",
             },
             {
               src: bufeImg,
-              alt: "Buffet do restaurante do Boulevard Suíte Hotel com frutas, pães e pratos quentes",
+              alt: "Buffet do restaurante do hotel diRoma com frutas, pães e pratos quentes",
               legenda: "Café da manhã em buffet",
             },
           ].map((img) => (
@@ -276,11 +276,11 @@ function LandingPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <article className="rounded-3xl border bg-card p-6 shadow-soft">
             <h3 className="flex items-center gap-2 text-lg">
-              <Waves className="size-5 text-primary" /> Hotel Boulevard Suítes
+              <Waves className="size-5 text-primary" /> Hotel diRoma
             </h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Ou unidade equivalente da rede diRoma. Apartamento triplo compartilhado, café da manhã
-              incluído e acesso às piscinas termais da estrutura.
+              Apartamento triplo compartilhado, café da manhã incluído e acesso às piscinas termais
+              da estrutura.
             </p>
             <ul className="mt-4 grid gap-2 text-sm">
               {[
@@ -363,9 +363,8 @@ function LandingPage() {
             <MapPin className="size-6 text-primary" />
             <h3 className="mt-4 text-lg">Embarque</h3>
             <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
-              <li>Brasília - DF, dia 11/09/2026</li>
-              <li>Chegada ao ponto às 07h00, saída às 07h30</li>
-              <li>Endereço exato enviado até 48h antes</li>
+              <li>Estacionamento do Hotel Nacional, Brasília - DF</li>
+              <li>Chegada ao ponto às 09h00, saída às 09h30</li>
               <li>Documento oficial com foto obrigatório</li>
             </ul>
           </article>
@@ -373,9 +372,9 @@ function LandingPage() {
             <ShieldCheck className="size-6 text-primary" />
             <h3 className="mt-4 text-lg">Cancelamento</h3>
             <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
-              <li>+30 dias: reembolso de 100% menos 10% administrativo</li>
-              <li>30 a 15 dias: reembolso de 50%</li>
-              <li>-15 dias: sem reembolso, com transferência de vaga gratuita</li>
+              <li>+20 dias: reembolso de 100% menos 10% administrativo</li>
+              <li>20 a 10 dias: sem reembolso, com transferência de vaga gratuita</li>
+              <li>-10 dias: sem reembolso, com transferência de vaga gratuita</li>
             </ul>
           </article>
         </div>
