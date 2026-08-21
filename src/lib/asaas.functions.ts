@@ -42,8 +42,8 @@ export const createReservationCheckout = createServerFn({ method: "POST" })
         access_token: apiKey,
       },
       body: JSON.stringify({
-        name: `Caldas Novas 18-20/09 — ${data.nome} (${data.passengers} pax)`,
-        description: `Reserva excursão Caldas Novas Vibrante, 18 a 20/09, saindo de Brasília. ${data.passengers} passageiro(s). Contato: ${data.whatsapp}${data.email ? ` / ${data.email}` : ""}.${data.cupom ? ` Cupom ${data.cupom}.` : ""}`,
+        name: `Caldas Novas 11-13/09 — ${data.nome} (${data.passengers} pax)`,
+        description: `Reserva excursão Caldas Novas Vibrante, 11 a 13/09, saindo de Brasília. ${data.passengers} passageiro(s). Contato: ${data.whatsapp}${data.email ? ` / ${data.email}` : ""}.${data.cupom ? ` Cupom ${data.cupom}.` : ""}`,
         billingType: "UNDEFINED",
         chargeType: "INSTALLMENT",
         value,

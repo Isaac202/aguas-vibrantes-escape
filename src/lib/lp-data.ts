@@ -8,9 +8,9 @@ export const PACKAGE = {
   preco: "R$ 620",
   precoParcela: "R$ 103,33",
   parcelasQtd: 6,
-  ida: "18/09/2026",
-  volta: "20/09/2026",
-  datasLabel: "18 a 20 de setembro de 2026",
+  ida: "11/09/2026",
+  volta: "13/09/2026",
+  datasLabel: "11 a 13 de setembro de 2026",
   parcelas: "ou 6x de R$ 103,33 no cartão",
   whatsapp: "556198586495",
   whatsappLabel: "(61) 9858-6495",
@@ -22,7 +22,7 @@ export const PACKAGE = {
 
 export const roteiro = [
   {
-    dia: "Dia 1 — 18/09 (sexta-feira)",
+    dia: "Dia 1 — 11/09 (sexta-feira)",
     titulo: "Saída de Brasília e chegada em Caldas Novas",
     itens: [
       { hora: "09h00", texto: "Embarque no estacionamento do Hotel Nacional, em Brasília" },
@@ -34,7 +34,7 @@ export const roteiro = [
     ],
   },
   {
-    dia: "Dia 2 — 19/09 (sábado)",
+    dia: "Dia 2 — 12/09 (sábado)",
     titulo: "Dia inteiro livre para lazer nas águas termais",
     itens: [
       { hora: "Manhã", texto: "Piscinas termais e estrutura de lazer do complexo diRoma" },
@@ -43,7 +43,7 @@ export const roteiro = [
     ],
   },
   {
-    dia: "Dia 3 — 20/09 (domingo)",
+    dia: "Dia 3 — 13/09 (domingo)",
     titulo: "Último banho termal e retorno",
     itens: [
       { hora: "Manhã", texto: "Café da manhã no hotel e tempo livre" },
@@ -77,7 +77,7 @@ export const naoIncluido = [
 export const faq = [
   {
     q: "De onde sai o ônibus e a que horas?",
-    a: "A saída é do estacionamento do Hotel Nacional, em Brasília - DF, com embarque às 09h00 e partida às 09h30 do dia 18/09/2026. O desembarque de volta, no dia 20/09/2026, também é no mesmo local.",
+    a: "A saída é do estacionamento do Hotel Nacional, em Brasília - DF, com embarque às 09h00 e partida às 09h30 do dia 11/09/2026. O desembarque de volta, no dia 13/09/2026, também é no mesmo local.",
   },
   {
     q: "O preço de R$ 620 é por pessoa?",
