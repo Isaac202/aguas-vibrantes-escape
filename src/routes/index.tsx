@@ -31,7 +31,7 @@ import { ReserveDialog } from "@/components/ReserveDialog";
 
 const TITLE = "Caldas Novas 3 Dias Saindo de Brasília | R$ 620 por Pessoa";
 const DESCRIPTION =
-  "Excursão para Caldas Novas de 11 a 13/09/2026 saindo de Brasília. R$ 620 por pessoa com ônibus Double Decker, 2 noites em hotel da rede diRoma e águas termais. Reserve online.";
+  "Excursão para Caldas Novas de 18 a 20/09/2026 saindo de Brasília. R$ 620 por pessoa com ônibus Double Decker, 2 noites em hotel da rede diRoma e águas termais. Reserve online.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -214,14 +214,14 @@ function LandingPage() {
 
         <div className="mt-6 flex flex-col items-center gap-3 rounded-3xl border bg-card p-5 shadow-soft sm:flex-row sm:justify-between">
           <p className="text-sm">
-            <strong>11 a 13 de setembro de 2026</strong> · sexta a domingo · embarque em Brasília às
+            <strong>18 a 20 de setembro de 2026</strong> · sexta a domingo · embarque em Brasília às
             09h00
           </p>
           <Button
             variant="thermal"
             size="lg"
             onClick={() => {
-              track("select_date", { date: "2026-09-11" });
+              track("select_date", { date: "2026-09-18" });
               startCheckout();
             }}
           >
@@ -421,7 +421,7 @@ function LandingPage() {
         <div className="relative mx-auto w-full max-w-3xl text-center text-thermal-foreground">
           <h2 className="text-3xl md:text-5xl">Sua vaga em Caldas Novas por {PACKAGE.preco}</h2>
           <p className="mx-auto mt-4 max-w-xl opacity-90">
-            3 dias e 2 noites, de 11 a 13/09/2026, saindo de Brasília. Transporte, hospedagem e café
+            3 dias e 2 noites, de 18 a 20/09/2026, saindo de Brasília. Transporte, hospedagem e café
             da manhã incluídos.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

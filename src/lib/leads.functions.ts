@@ -41,7 +41,7 @@ export const sendLeadEmail = createServerFn({ method: "POST" })
             )
             .join("")}
         </table>
-        <p style="font-size:13px;color:#555">Excursão Caldas Novas Vibrante — 11 a 13/09, saindo de Brasília.</p>
+        <p style="font-size:13px;color:#555">Excursão Caldas Novas Vibrante — 18 a 20/09, saindo de Brasília.</p>
       </div>`;
 
     const res = await fetch("https://api.resend.com/emails", {
